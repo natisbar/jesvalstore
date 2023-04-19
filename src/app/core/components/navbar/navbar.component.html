@@ -1,0 +1,12 @@
+<nav>
+  <div class="navp-brand">
+    <a href="#">
+      <img src="{{imageToolbar}}" alt="Logo de jesvalstore">
+    </a>
+  </div>
+  <ul class="navp">
+    <li class="navp-item" *ngFor="let item of items; let i as index">
+      <a class="navp-link draw" [href]="item.idUbicacion">{{item.nombre}}</a>
+    </li>
+  </ul>
+</nav>

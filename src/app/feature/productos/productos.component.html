@@ -1,0 +1,62 @@
+<section id="productos">
+  <div class="contenedor">
+    <div class="producto" *ngFor = "let categoria of productosPorCategoria; let i = index">
+      <h3>{{categoria.nombre}}</h3>
+      <form action="">
+        <label for="tipo{{categoria.nombre}}">Tipo: </label>
+        <select name="tipo{{categoria.nombre}}" id="tipo{{categoria.nombre}}" (change)="cambioTipoSubproducto($event, i)">
+          <option value={{opcion.nombre}} *ngFor = "let opcion of categoria.listaSubproductos">{{opcion.nombre}}</option>
+        </select>
+        <div class="contenedor-img">
+          <figure>
+            <img src="{{pathImagenes}}/{{categoria.nombre}}/{{subproductoTemporal[i].imagen}}" alt="">
+          </figure>
+          <div>
+            <p></p>
+          </div>
+        </div>
+        <div class="contenedor-opciones">
+          <div class="caracteristicas">
+            <div *ngIf="subproductoTemporal[i].subtipo.length > 1">
+              <label for="usuario{{categoria.nombre}}">Para: </label>
+              <select name="usuario{{categoria.nombre}}" id="usuario{{categoria.nombre}}" (change)="cambioUser($event, i)">
+                <option value={{opcion}} *ngFor = "let opcion of subproductoTemporal[i].subtipo">{{opcion}}</option>
+              </select>
+            </div>
+            <div *ngIf="subproductoTemporal[i].subtipo.length > 0">
+              <label for="talla{{categoria.nombre}}">Talla: </label>
+              <select name="talla{{categoria.nombre}}" id="talla{{categoria.nombre}} ">
+                <option value={{opcion}} *ngFor = "let opcion of tallasTemporal[i].listaTallas">{{opcion}}</option>
+              </select>
+            </div>
+            <div *ngIf="subproductoTemporal[i].subtipo.length == 0">
+              <label for="talla{{categoria.nombre}}">Talla: Unica</label>
+            </div>
+            <div *ngIf="subproductoTemporal[i].colores.length > 0">
+              <label for="color{{categoria.nombre}}">Color: </label>
+              <select name="color{{categoria.nombre}}" id="color{{categoria.nombre}}">
+                <option value={{opcion}} *ngFor = "let opcion of subproductoTemporal[i].colores">{{opcion}}</option>
+              </select>
+            </div>
+            <div *ngIf="categoria.faz">
+              <label for="faz{{categoria.nombre}}">Faz: </label>
+              <select name="faz{{categoria.nombre}}" id="faz{{categoria.nombre}}" (change)="mostrarColoresFaz($event)">
+                <option value=1 selected>Una faz</option>
+                <option value=2>Doble faz</option>
+              </select>
+            </div>
+            <div *ngIf="esDobleFaz && categoria.faz">
+              <label for="colorfaz{{categoria.nombre}}" >color Faz: </label>
+              <select name="colorfaz{{categoria.nombre}}" id="colorfaz{{categoria.nombre}}">
+                <option value={{opcion}} *ngFor = "let opcion of categoria.coloresFaz">{{opcion}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="botones">
+            <button>Talla</button>
+            <input type="submit" value="Pedir">
+          </div>
+        </div>
+      </form>
+
+    </div>

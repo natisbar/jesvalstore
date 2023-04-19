@@ -1,0 +1,16 @@
+.contenedor{
+  background-color: #f3e7f3;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.contenedor-opciones{
+  display: flex;
+}
+
+.caracteristicas{
+display: flex;
+flex-direction: column;
+}

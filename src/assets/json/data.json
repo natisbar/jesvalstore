@@ -38,12 +38,12 @@
         "tipo": [{
                     "nombre": "Térmica sencilla",
                     "color": ["sencillo"],
-                    "subtipo": ["Adulto", "Junior"]
+                    "subtipo": ["Hombre", "Mujer", "Junior"]
                   },
                   {
                     "nombre": "Térmica exclusiva",
                     "color": ["exclusivo"],
-                    "subtipo": ["Adulto", "Junior"]
+                    "subtipo": ["Hombre", "Mujer", "Junior"]
                   },
                   {
                     "nombre": "Top 1",
@@ -68,10 +68,6 @@
         "faz": false,
         "talla": [
           {
-            "categoria": "Adulto",
-            "talla": ["XS(m)","XS(h)", "S(m)","S(h)", "M(m)", "M(h)", "L(m)","L(h)"]
-          },
-          {
             "categoria": "Mujer",
             "talla": ["XS", "S", "M", "L"]
           },
@@ -84,19 +80,52 @@
             "talla": ["2", "4", "6", "8", "10", "10-12", "14-16"]
           }
         ]
-        }
+        },
+        {
+          "categoria": "Jogger-Otros",
+          "tipo": [{
+                      "nombre": "Jogger",
+                      "color": ["basicos"],
+                      "subtipo": ["Hombre", "Mujer"]
+                    },
+                    {
+                      "nombre": "Sudadera",
+                      "color": ["basicos"],
+                      "subtipo": ["Hombre", "Mujer"]
+                    },
+                    {
+                      "nombre": "Buzos RBD",
+                      "color": [],
+                      "subtipo": ["Hombre", "Mujer"]
+                    }],
+          "faz": false,
+          "talla": [
+            {
+              "categoria": "Mujer",
+              "talla": ["XS", "S", "M", "L"]
+            },
+            {
+              "categoria": "Hombre",
+              "talla": ["XS", "S", "M", "L"]
+            }
+          ]
+          }
     ],
   "color": [{
-                "nombre": "Sencillo",
-                "colores": ["Lila", "Azul oscuro", "Azul cielo", "Negro", "Blanco", "Rojo", "Palo de rosa", "Cafe", "Morado", "Tiguer", "Gris oscuro", "Animal print", "Verde", "Jirafa", "Vaca", "Zebra", "Solivan"]
+              "nombre": "Sencillo",
+              "colores": ["Lila", "Azul oscuro", "Azul cielo", "Negro", "Blanco", "Rojo", "Palo de rosa", "Cafe", "Morado", "Tiguer", "Gris oscuro", "Animal print", "Verde", "Jirafa", "Vaca", "Zebra", "Solivan"]
             },
             {
-                "nombre": "Exclusivo",
-                "colores": ["Personalizado","Aguacate claro", "Aguacate/Tostada","Aguacate oscuro","Baby Yoda","Deadpool","Minions","Naruto/nubes","Batman","Harry Potter blanco","Stitch","Gatos","Astronauta","Cuadros rojos/negros","Star Wars","Oreo","Perrito","Harry Potter azul claro","Pokemon","Pechan","Escandalosos","Hello Kitty","Snoopy","Bob Esponja","Avengers"]
+              "nombre": "Exclusivo",
+              "colores": ["Personalizado","Aguacate claro", "Aguacate/Tostada","Aguacate oscuro","Baby Yoda","Deadpool","Minions","Naruto/nubes","Batman","Harry Potter blanco","Stitch","Gatos","Astronauta","Cuadros rojos/negros","Star Wars","Oreo","Perrito","Harry Potter azul claro","Pokemon","Pechan","Escandalosos","Hello Kitty","Snoopy","Bob Esponja","Avengers"]
             },
             {
-                "nombre": "Faz",
-                "colores": ["rosa 1", "Blanco", "Café", "Azul", "Gris claro", "Negro", "rosa 2", "Gris oscuro", "Rojo", "Cafe claro", "Rosa 3"]
+              "nombre": "Basicos",
+              "colores": ["Gris1", "Gris2", "Lila", "Rosado", "Negro", "Gris3", "Azul claro", "Rosa 2", "Verde", "Verde 2", "Rojizo","Blanco"]
+            },
+            {
+              "nombre": "Faz",
+              "colores": ["rosa 1", "Blanco", "Café", "Azul", "Gris claro", "Negro", "rosa 2", "Gris oscuro", "Rojo", "Cafe claro", "Rosa 3"]
             }
   ]
 }

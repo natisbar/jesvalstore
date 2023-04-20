@@ -33,6 +33,7 @@ div figure img{
   border-radius: 20px;
   border: solid 5px #f3e7f3;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .btn-principal:hover{

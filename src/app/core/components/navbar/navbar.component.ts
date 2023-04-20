@@ -1,4 +1,6 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuItem } from '../../models/menuItems';
 
 @Component({
@@ -12,7 +14,12 @@ export class NavbarComponent implements OnInit{
   items: MenuItem[];
   imageToolbar:string;
 
-  constructor(){}
+  constructor(private scroller: ViewportScroller){}
+
+  public redirigirEnPagina(id:string){
+    this.scroller.scrollToAnchor(id);
+  }
+
 
   ngOnInit(){
     let ubicacionActual = window.location.href;

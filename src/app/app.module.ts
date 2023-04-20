@@ -7,7 +7,19 @@ import { NosotrosComponent } from './feature/nosotros/nosotros.component';
 import { ProductosComponent } from './feature/productos/productos.component';
 import { ClientesComponent } from './feature/clientes/clientes.component';
 import { DudasComponent } from './feature/dudas/dudas.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+// import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: '', component: AppComponent
+  }
+];
+
+const routerOptions: ExtraOptions ={
+  anchorScrolling: "enabled"
+};
+
 
 @NgModule({
   declarations: [
@@ -20,8 +32,12 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
   imports: [
     BrowserModule,
     CoreModule
+    // RouterModule.forRoot(routes, routerOptions)
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  exports: [
+    NosotrosComponent
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

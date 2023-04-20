@@ -1,0 +1,131 @@
+{
+  "productos":
+    [{
+      "categoria": "Hoodie",
+      "tipo": [{
+                  "nombre": "Sencillo",
+                  "color": ["sencillo"],
+                  "subtipo": ["Adulto", "Junior", "Mascota"]
+                },
+                {
+                  "nombre": "Exclusivo",
+                  "color": ["exclusivo"],
+                  "subtipo": ["Adulto", "Junior", "Mascota"]
+                },
+                {
+                  "nombre": "Edición especial",
+                  "color": [],
+                  "subtipo": ["Adulto", "Junior", "Mascota"]
+                }],
+      "faz": true,
+      "talla": [
+        {
+          "categoria": "Adulto",
+          "talla": ["XS", "S", "M", "L"]
+        },
+        {
+          "categoria": "Junior",
+          "talla": [1, 2, 3, 4, 5, 6, 8, 10, 12]
+        },
+        {
+          "categoria": "Mascota",
+          "talla": ["XS", "S", "M", "L", "XL", "2XL", "3XL", "4XL"]
+        }
+      ]
+      },
+      {
+        "categoria": "Pijama",
+        "tipo": [{
+                    "nombre": "Térmica sencilla",
+                    "color": ["sencillo"],
+                    "subtipo": ["Hombre", "Mujer", "Junior"]
+                  },
+                  {
+                    "nombre": "Térmica exclusiva",
+                    "color": ["exclusivo"],
+                    "subtipo": ["Hombre", "Mujer", "Junior"]
+                  },
+                  {
+                    "nombre": "Top 1",
+                    "color": ["sencillo", "exclusivo"],
+                    "subtipo": ["Hombre", "Mujer"]
+                  },
+                  {
+                    "nombre": "Top 2",
+                    "color": ["sencillo", "exclusivo"],
+                    "subtipo": ["Hombre", "Mujer"]
+                  },
+                  {
+                    "nombre": "Enterizas",
+                    "color": [],
+                    "subtipo": ["Hombre", "Mujer", "Junior"]
+                  },
+                  {
+                    "nombre": "Camisón",
+                    "color": ["sencillo"],
+                    "subtipo": []
+                  }],
+        "faz": false,
+        "talla": [
+          {
+            "categoria": "Mujer",
+            "talla": ["XS", "S", "M", "L"]
+          },
+          {
+            "categoria": "Hombre",
+            "talla": ["XS", "S", "M", "L"]
+          },
+          {
+            "categoria": "Junior",
+            "talla": ["2", "4", "6", "8", "10", "10-12", "14-16"]
+          }
+        ]
+        },
+        {
+          "categoria": "Jogger-Otros",
+          "tipo": [{
+                      "nombre": "Jogger",
+                      "color": ["basicos"],
+                      "subtipo": ["Hombre", "Mujer"]
+                    },
+                    {
+                      "nombre": "Sudadera",
+                      "color": ["basicos"],
+                      "subtipo": ["Hombre", "Mujer"]
+                    },
+                    {
+                      "nombre": "Buzos RBD",
+                      "color": [],
+                      "subtipo": ["Hombre", "Mujer"]
+                    }],
+          "faz": false,
+          "talla": [
+            {
+              "categoria": "Mujer",
+              "talla": ["XS", "S", "M", "L"]
+            },
+            {
+              "categoria": "Hombre",
+              "talla": ["XS", "S", "M", "L"]
+            }
+          ]
+          }
+    ],
+  "color": [{
+              "nombre": "Sencillo",
+              "colores": ["Lila", "Azul oscuro", "Azul cielo", "Negro", "Blanco", "Rojo", "Palo de rosa", "Cafe", "Morado", "Tiguer", "Gris oscuro", "Animal print", "Verde", "Jirafa", "Vaca", "Zebra", "Solivan"]
+            },
+            {
+              "nombre": "Exclusivo",
+              "colores": ["Personalizado","Aguacate claro", "Aguacate/Tostada","Aguacate oscuro","Baby Yoda","Deadpool","Minions","Naruto/nubes","Batman","Harry Potter blanco","Stitch","Gatos","Astronauta","Cuadros rojos/negros","Star Wars","Oreo","Perrito","Harry Potter azul claro","Pokemon","Pechan","Escandalosos","Hello Kitty","Snoopy","Bob Esponja","Avengers"]
+            },
+            {
+              "nombre": "Basicos",
+              "colores": ["Gris1", "Gris2", "Lila", "Rosado", "Negro", "Gris3", "Azul claro", "Rosa 2", "Verde", "Verde 2", "Rojizo","Blanco"]
+            },
+            {
+              "nombre": "Faz",
+              "colores": ["rosa 1", "Blanco", "Café", "Azul", "Gris claro", "Negro", "rosa 2", "Gris oscuro", "Rojo", "Cafe claro", "Rosa 3"]
+            }
+  ]
+}

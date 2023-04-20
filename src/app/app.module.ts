@@ -7,6 +7,7 @@ import { NosotrosComponent } from './feature/nosotros/nosotros.component';
 import { ProductosComponent } from './feature/productos/productos.component';
 import { ClientesComponent } from './feature/clientes/clientes.component';
 import { DudasComponent } from './feature/dudas/dudas.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { DudasComponent } from './feature/dudas/dudas.component';
     BrowserModule,
     CoreModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

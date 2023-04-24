@@ -9,9 +9,10 @@ export class DudasComponent {
   public isActive: string;
 
   public clicAcordion(element:any){
-    var acc = document.getElementsByClassName("accordion");
-    console.log(element.parentElement);
+    // var acc = document.getElementsByClassName("accordion");
+    console.log(element);
     element.classList.toggle("active");
+    element.nextElementSibling.classList.toggle("active");
     element.classList.toggle("con-margen");
     element.nextElementSibling.classList.toggle("girar");
     var panel = element.parentElement.nextElementSibling;

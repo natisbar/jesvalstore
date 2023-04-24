@@ -23,6 +23,13 @@ footer{
   padding: 0 0.5rem;
 }
 
+.redes-sociales a:hover{
+  color: #b95e9c;
+  background-color: white;
+  border-radius: 20px;
+}
+
+
 .diseno{
   padding: 1rem 0;
   display: flex;

@@ -16,30 +16,33 @@
 .encabezado{
   position: relative;
   transition: all 0.4s ease-in-out;
+  color: #B95E9C;
+}
+
+.encabezado:hover{
+  color: white;
 }
 
 .encabezado i{
   position: absolute;
   left: 97%;
   top: 30%;
-  color: white;
+  /* color: black; */
   transition: transform 0.4s ease-in-out;
 }
 
 .accordion {
-  background-color: #B95E9C;
+  background-color: white;
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: solid 1px #8b1a71;
+  border: solid 1px #B95E9C;
   border-radius: 10px;
   text-align: left;
   outline: none;
   font-size: 15px;
   transition: 0.4s;
-  color: white;
 }
-
 
 .con-margen{
   margin-bottom: 0.5rem;
@@ -51,12 +54,14 @@
 }
 
 .accordion:hover{
-  background-color: #8b1a71;
-  border: solid 1px #B95E9C;
+  background-color: #B95E9C;
+  color: white;
 }
 
 .active {
   border-radius: 10px 10px 0 0;
+  background-color: #B95E9C;
+  color: white;
 }
 
 .panel {
@@ -70,5 +75,41 @@
 
 .contenido-panel{
   padding: 2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .encabezado i{
+    position: absolute;
+    left: 95%;
+    top: 30%;
+    /* color: black; */
+    transition: transform 0.4s ease-in-out;
+  }
+
+  #dudas{
+    padding: 2rem 2rem;
+    background-color: #f3e7f3;
+  }
+
+  .container{
+    width: 100%;
+    margin: auto;
+    padding: 2rem 0;
+  }
+
+  .contenido-panel{
+    padding: 2rem 1rem;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .encabezado i{
+    left: 89%;
+    top: 30%;
+  }
+
+  .contenido-panel{
+    padding: 2rem 0.5rem;
+  }
 }
 

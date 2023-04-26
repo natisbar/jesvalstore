@@ -9,6 +9,7 @@ import { ClientesComponent } from './feature/clientes/clientes.component';
 import { DudasComponent } from './feature/dudas/dudas.component';
 // import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 const routes: Routes = [
   {
@@ -31,7 +32,8 @@ const routerOptions: ExtraOptions ={
   ],
   imports: [
     BrowserModule,
-    CoreModule
+    CoreModule,
+    SharedModule
     // RouterModule.forRoot(routes, routerOptions)
   ],
   exports: [

@@ -3,11 +3,11 @@
   <div class="contenedor">
     <div class="producto" *ngFor = "let categoria of productosPorCategoria; let i = index">
       <h3>{{categoria.nombre}}</h3>
-      <form action="">
+      <form [formGroup]="formProductos" #myForm="ngForm" (ngSubmit)="iniciarSolicitud(categoria.nombre, i)">
         <div class="centrar-items cabecera">
           <label for="tipo{{categoria.nombre}}">Tipo: </label>
-          <select class="classic" name="tipo{{categoria.nombre}}" id="tipo{{categoria.nombre}}" (change)="cambioTipoSubproducto($event, i)">
-            <option value={{opcion.nombre}} *ngFor = "let opcion of categoria.listaSubproductos">{{opcion.nombre}}</option>
+          <select [required]="true" class="classic" formControlName="tipoProducto" name="tipo{{categoria.nombre}}" id="tipo{{categoria.nombre}}" (change)="cambioTipoSubproducto($event, i)">
+            <option value={{opcion.nombre}} *ngFor = "let opcion of categoria.listaSubproductos; let j = index">{{opcion.nombre}}</option>
           </select>
         </div>
         <div class="contenedor-img">
@@ -23,13 +23,13 @@
           <div class="caracteristicas">
             <div *ngIf="subproductoTemporal[i].subtipo.length > 1">
               <label for="usuario{{categoria.nombre}}">Para: </label>
-              <select class="classic" name="usuario{{categoria.nombre}}" id="usuario{{categoria.nombre}}" (change)="cambioUser($event, i)">
+              <select [required]="true" class="classic" formControlName="tipoUsuario" name="usuario{{categoria.nombre}}" id="usuario{{categoria.nombre}}" (change)="cambioUser($event, i)">
                 <option value={{opcion}} *ngFor = "let opcion of subproductoTemporal[i].subtipo">{{opcion}}</option>
               </select>
             </div>
             <div *ngIf="subproductoTemporal[i].subtipo.length > 0">
               <label for="talla{{categoria.nombre}}">Talla: </label>
-              <select class="classic" name="talla{{categoria.nombre}}" id="talla{{categoria.nombre}} ">
+              <select [required]="subproductoTemporal[i].subtipo.length > 0" class="classic" formControlName="talla" name="talla{{categoria.nombre}}" id="talla{{categoria.nombre}} ">
                 <option value={{opcion}} *ngFor = "let opcion of tallasTemporal[i].listaTallas">{{opcion}}</option>
               </select>
             </div>
@@ -38,29 +38,28 @@
             </div>
             <div *ngIf="subproductoTemporal[i].colores.length > 0">
               <label for="color{{categoria.nombre}}">Color: </label>
-              <select class="classic" name="color{{categoria.nombre}}" id="color{{categoria.nombre}}">
+              <select [required]="subproductoTemporal[i].colores.length > 0" class="classic" formControlName="color" name="color{{categoria.nombre}}" id="color{{categoria.nombre}}">
                 <option value={{opcion}} *ngFor = "let opcion of subproductoTemporal[i].colores">{{opcion}}</option>
               </select>
             </div>
             <div *ngIf="categoria.faz">
               <label for="faz{{categoria.nombre}}">Faz: </label>
-              <select class="classic" name="faz{{categoria.nombre}}" id="faz{{categoria.nombre}}" (change)="mostrarColoresFaz($event)">
+              <select [required]="categoria.faz" class="classic" formControlName="faz" name="faz{{categoria.nombre}}" id="faz{{categoria.nombre}}" (change)="mostrarColoresFaz($event)">
                 <option value=1 selected>Una faz</option>
                 <option value=2>Doble faz</option>
               </select>
             </div>
             <div *ngIf="esDobleFaz && categoria.faz">
               <label for="colorfaz{{categoria.nombre}}" >Color(F): </label>
-              <select class="classic" name="colorfaz{{categoria.nombre}}" id="colorfaz{{categoria.nombre}}">
+              <select [required]="esDobleFaz && categoria.faz" class="classic" formControlName="colorFaz" name="colorfaz{{categoria.nombre}}" id="colorfaz{{categoria.nombre}}">
                 <option value={{opcion}} *ngFor = "let opcion of categoria.coloresFaz">{{opcion}}</option>
               </select>
             </div>
           </div>
           <div class="botones">
-            <button class="btn-principal">Talla</button>
+            <a class="btn-principal">Talla</a>
             <input class="btn-principal" type="submit" value="Pedir">
           </div>
         </div>
       </form>
-
     </div>

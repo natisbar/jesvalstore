@@ -79,6 +79,7 @@
 }
 
 @media screen and (max-width: 1200px) {
+
   .encabezado i{
     position: absolute;
     left: 95%;
@@ -107,6 +108,10 @@
   .encabezado i{
     left: 89%;
     top: 30%;
+  }
+
+  .encabezado{
+    font-size: 1rem;
   }
 
   .contenido-panel{

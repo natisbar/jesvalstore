@@ -1,62 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-// import * as data from '../../../assets/json/data.json';
+import { FormControl, FormGroup, Validators} from '@angular/forms';
 import data from 'src/assets/json/data.json';
+import { Medida } from '../shared/model/medida';
+import { Producto } from '../shared/model/producto';
+import { Subproducto } from '../shared/model/subproducto';
+import { Tela } from '../shared/model/tela';
 
 const PATH_CONSULTA_IMAGENES_LOCAL = "../../../assets/image/";
 const PATH_CONSULTA_IMAGENES_PDN = "assets/image/";
 
-export class Subproducto {
-  categoria: string;
-  nombre: string;
-  colores: string[];
-  subtipo: string[];
-  imagen: string;
+export class Requeridos{
+  // categoria: string;
+  // tipoProducto: string;
+  tipoUsuario: boolean;
+  talla: boolean;
+  color: boolean;
   faz: boolean;
-  descripcion: string;
+  colorFaz: boolean;
 
-  constructor(nombre: string, categoria: string, colores: string[], subtipo: string[], imagen: string){
-    this.nombre = nombre;
-    this.colores = colores;
-    this.imagen = imagen;
-    this.categoria = categoria;
-    this.subtipo = subtipo;
-  }
-}
-
-export class Producto {
-  nombre: string;
-  listaSubproductos: Subproducto[];
-  faz: boolean;
-  talla: Medida[];
-  coloresFaz: string[];
-
-  constructor(nombre: string, listaSubproductos: Subproducto[], faz: boolean, talla: Medida[]){
-    this.nombre = nombre;
-    this.listaSubproductos = listaSubproductos;
-    this.faz = faz;
+  constructor(tipoUsuario: boolean, talla: boolean, color: boolean, faz: boolean){
+    // this.categoria = categoria;
+    // this.tipoProducto = tipoProducto;
+    this.tipoUsuario = tipoUsuario;
     this.talla = talla;
+    this.color = color;
+    this.faz = faz;
   }
 }
 
-export class Medida{
-  categoria: string;
-  listaTallas: string[];
-
-  constructor(categoria: string, listaTallas: string[]){
-    this.categoria = categoria;
-    this.listaTallas = listaTallas;
-  }
-}
-
-export class Tela{
-  nombre: string;
-  colores: string[];
-
-  constructor(nombre: string, colores: string[]){
-    this.nombre = nombre;
-    this.colores = colores;
-  }
-}
 
 @Component({
   selector: 'app-productos',
@@ -65,6 +36,7 @@ export class Tela{
 })
 export class ProductosComponent implements OnInit {
 
+  public formProductos: FormGroup;
   public productosPorCategoria: Producto[];
   public cantidadProductos: number;
   public esDobleFaz: boolean;
@@ -72,12 +44,11 @@ export class ProductosComponent implements OnInit {
   public subproductoTemporal: Subproducto[];
   public tallasTemporal: Medida[];
   public pathImagenes: string;
+  public mensajeWhatsapp: string;
+  public datosRequeridos: Requeridos[];
+  public mensaje: string;
 
   constructor(){
-    // this.productos1.push(new Producto("Sencillo", ["lila","azul oscuro","negro","blanco","rojo"], "../../assets/image/Hoodie/sencillo.png"));
-    // this.productos1.push(new Producto("Exclusivo", ["lila","azul oscuro","negro","blanco","rojo"], "../../assets/image/Hoodie/exclusivo.png"));
-    // this.productos1.push(new Producto("Junior", ["lila","azul oscuro","negro","blanco","rojo"], "../../assets/image/Hoodie/junior.png"));
-    // console.log(this.productos1);
   }
 
   ngOnInit(): void {
@@ -90,8 +61,46 @@ export class ProductosComponent implements OnInit {
       this.tallasTemporal.push(producto.talla[0]);
     });
     this.pathImagenes = ProductosComponent.identificarPathImagenes();
-
+    this.construirFormulario();
     //this.cambioTipoSubproducto({"target":{"value":"sencillo"}}, 1);
+  }
+
+  public iniciarSolicitud(categoriaPrincipal:string, index:number){
+    console.log(this.formProductos.value);
+    if (this.formProductos.valid){
+      this.mensaje = `Hola, estoy interesada en un(a) ${categoriaPrincipal}
+      Tipo: ${this.formProductos.value.tipoProducto}
+      ${(this.formProductos.value.tipoUsuario != null) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
+      ${(this.formProductos.value.talla != null) ? "Talla: " + this.formProductos.value.talla : ""}
+      ${(this.formProductos.value.color != null) ? "Color: " + this.formProductos.value.color : ""}
+      ${(this.formProductos.value.faz != null) ? "Faz: " + this.formProductos.value.faz  : ""}
+      ${(this.formProductos.value.colorFaz != null) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
+      console.log(this.mensaje);
+
+      window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
+
+
+    }
+    console.log(this.mensaje);
+    // console.log(categoriaPrincipal);
+
+    // console.log(this.formProductos.valid);
+  }
+
+  public construirFormulario(){
+    this.formProductos = new FormGroup({
+      tipoProducto: new FormControl(null),
+      tipoUsuario: new FormControl(null),
+      talla: new FormControl(null),
+      color: new FormControl(null),
+      faz: new FormControl(null),
+      colorFaz: new FormControl(null)
+    });
+
+    // this.formProductos.get('tipoProducto')?.valueChanges
+    //   .subscribe(value => {
+    //     console.log(value)
+    //   });
   }
 
   public obtenerTelas(){
@@ -122,7 +131,6 @@ export class ProductosComponent implements OnInit {
   public generarNombreImagen(nombreSubproducto: string): string{
     let nombreImagen = nombreSubproducto.toLowerCase().replaceAll(" ","_").normalize("NFD").replace(/[\u0300-\u036f]/g, "")+".png";
     return nombreImagen;
-
   }
 
   public obtenerMedidas(tallaPorCategoria: any): Medida[]{
@@ -152,9 +160,14 @@ export class ProductosComponent implements OnInit {
 
   public cambioTipoSubproducto(value:any, index:number){
     let valor = value.target.value;
+    this.formProductos.reset();
+    this.formProductos.get("tipoProducto")?.setValue(valor);
     this.productosPorCategoria[index].listaSubproductos.forEach(subproducto => {
         if(subproducto.nombre.toLowerCase() == valor.toLowerCase()){
           // console.log(subproducto);
+          let fieldRequeridos = this.obtenerFieldRequeridos(subproducto, this.productosPorCategoria[index].faz);
+          this.cambiarFieldRequeridos(fieldRequeridos);
+          console.log(fieldRequeridos);
           this.subproductoTemporal[index] = subproducto;
           this.cambioUser({"target":{"value":subproducto.subtipo[0]}}, index);
           // this.tallasTemporal[index] = this.productosPorCategoria[index].talla;
@@ -162,12 +175,29 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+  public cambiarFieldRequeridos(fieldRequeridos: Requeridos){
+    (fieldRequeridos.tipoUsuario) ? this.formProductos.get("tipoUsuario")?.setValidators([Validators.required]) : this.formProductos.get("tipoUsuario")?.setValidators(null);
+    this.formProductos.get("tipoUsuario")?.updateValueAndValidity();
+    (fieldRequeridos.talla) ? this.formProductos.get("talla")?.setValidators([Validators.required]) : this.formProductos.get("talla")?.setValidators(null);
+    this.formProductos.get("talla")?.updateValueAndValidity();
+    (fieldRequeridos.color) ? this.formProductos.get("color")?.setValidators([Validators.required]) : this.formProductos.get("color")?.setValidators(null);
+    this.formProductos.get("color")?.updateValueAndValidity();
+    (fieldRequeridos.faz) ? this.formProductos.get("faz")?.setValidators([Validators.required]) : this.formProductos.get("faz")?.setValidators(null);
+    this.formProductos.get("faz")?.updateValueAndValidity();
+    this.formProductos.get("colorFaz")?.setValidators(null);
+    this.formProductos.get("colorFaz")?.updateValueAndValidity();
+  }
+
+  public obtenerFieldRequeridos(subproducto: Subproducto, faz: boolean){
+    return new Requeridos(subproducto.subtipo.length > 0, subproducto.subtipo.length > 0, subproducto.colores.length > 0, faz);
+  }
+
   public cambioUser(value:any, index:number){
     let valor = value.target.value;
     //console.log(this.productosPorCategoria);
     this.productosPorCategoria[index].talla.forEach(element => {
         if(element.categoria.toLowerCase() == valor.toLowerCase()){
-          console.log(element);
+          // console.log(element);
           this.tallasTemporal[index] = element;
         }
     });
@@ -182,9 +212,12 @@ export class ProductosComponent implements OnInit {
   public mostrarColoresFaz(value:any){
     if(2 == value.target.value){
       this.esDobleFaz = true;
+      this.formProductos.get("colorFaz")?.setValidators([Validators.required])
     }
     else{
       this.esDobleFaz = false;
+      this.formProductos.get("colorFaz")?.setValidators(null)
     }
+    this.formProductos.get("colorFaz")?.updateValueAndValidity();
   }
 }

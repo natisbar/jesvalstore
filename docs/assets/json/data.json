@@ -5,17 +5,20 @@
       "tipo": [{
                   "nombre": "Sencillo",
                   "color": ["sencillo"],
-                  "subtipo": ["Adulto", "Junior", "Mascota"]
+                  "subtipo": ["Adulto", "Junior", "Mascota"],
+                  "descripcion": ""
                 },
                 {
                   "nombre": "Exclusivo",
                   "color": ["exclusivo"],
-                  "subtipo": ["Adulto", "Junior", "Mascota"]
+                  "subtipo": ["Adulto", "Junior", "Mascota"],
+                  "descripcion": ""
                 },
                 {
                   "nombre": "Edición especial",
                   "color": [],
-                  "subtipo": ["Adulto", "Junior", "Mascota"]
+                  "subtipo": ["Adulto", "Junior", "Mascota"],
+                  "descripcion": ""
                 }],
       "faz": true,
       "talla": [

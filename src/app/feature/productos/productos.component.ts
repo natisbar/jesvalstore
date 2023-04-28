@@ -86,22 +86,42 @@ export class ProductosComponent implements OnInit {
 
   public iniciarSolicitud(categoriaPrincipal:string, index:number){
     console.log(this.formProductos.value);
-    if (this.formProductos.valid){
+    let productoEnCategoria: boolean = this.validarProductoEnCategoria(categoriaPrincipal, this.formProductos.value.tipoProducto);
+    if (this.formProductos.valid && productoEnCategoria){
       this.mensaje = `Hola, estoy interesada en un(a) ${categoriaPrincipal}
       Tipo: ${this.formProductos.value.tipoProducto}
-      ${(this.formProductos.value.tipoUsuario != null && this.formProductos.value.tipoUsuario != "" ) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
-      ${(this.formProductos.value.talla != null && this.formProductos.value.talla != "" ) ? "Talla: " + this.formProductos.value.talla : ""}
-      ${(this.formProductos.value.color != null && this.formProductos.value.color != "" ) ? "Color: " + this.formProductos.value.color : ""}
-      ${(this.formProductos.value.faz != null && this.formProductos.value.faz != "" ) ? "Faz: " + this.formProductos.value.faz  : ""}
-      ${(this.formProductos.value.colorFaz != null && this.formProductos.value.colorFaz != "" ) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
+      ${(this.formProductos.get("tipoUsuario")?.errors?.['required'] && this.formProductos.value.tipoUsuario.length > 0 ) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
+      ${(this.formProductos.get("talla")?.errors?.['required'] && this.formProductos.value.talla.length > 0 ) ? "Talla: " + this.formProductos.value.talla : ""}
+      ${(this.formProductos.get("color")?.errors?.['required'] && this.formProductos.value.color.length > 0  ) ? "Color: " + this.formProductos.value.color : ""}
+      ${(this.formProductos.get("faz")?.errors?.['required'] && this.formProductos.value.faz.length > 0  ) ? "Faz: " + this.formProductos.value.faz  : ""}
+      ${(this.formProductos.get("colorFaz")?.errors?.['required'] && this.formProductos.value.colorFaz.length > 0  ) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
 
       window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
     }
     else {
-      let relacionFields = this.generarMensajeConFieldsRequeridos(categoriaPrincipal);
-      this.llenarModal("Error!", "Tienes algunos campos sin diligenciar: " + relacionFields);
-      this.mostrarModal = true;
+      if(!productoEnCategoria){
+        this.llenarModal("Error!", "Elige el tipo de " + categoriaPrincipal + " que deseas.");
+        this.mostrarModal = true;
+      }
+      else {
+        let relacionFields = this.generarMensajeConFieldsRequeridos(categoriaPrincipal);
+        this.llenarModal("Error!", "Tienes algunos campos sin diligenciar: " + relacionFields);
+        this.mostrarModal = true;
+      }
     }
+  }
+
+  public validarProductoEnCategoria(categoria:string, nombreTipoProducto:string){
+    for (let i = 0; i < this.productosPorCategoria.length; i++) {
+      if(this.productosPorCategoria[i].nombre.toLowerCase() == categoria.toLowerCase()){
+        for (let j = 0; j < this.productosPorCategoria[i].listaSubproductos.length; j++) {
+          if(this.productosPorCategoria[i].listaSubproductos[j].nombre.toLowerCase() == nombreTipoProducto.toLowerCase()){
+            return true;
+          }
+        }
+      }
+    }
+    return false;
   }
 
   public generarMensajeConFieldsRequeridos(categoria:string){
@@ -183,9 +203,9 @@ export class ProductosComponent implements OnInit {
 
   public cambioTipoSubproducto(value:any, index:number){
     let valor = value.target.value;
-    this.formProductos.reset();
-    this.construirFormulario();
-    this.formProductos.get("tipoProducto")?.setValue(valor);
+    //this.formProductos.reset(); //se pierden selecciones anteriores
+    // this.construirFormulario();  //Esto afecta las validaciones
+    // this.formProductos.get("tipoProducto")?.setValue(valor);  //quita la seleccion de tipo de producto
     this.productosPorCategoria[index].listaSubproductos.forEach(subproducto => {
         if(subproducto.nombre.toLowerCase() == valor.toLowerCase()){
           // console.log(subproducto);

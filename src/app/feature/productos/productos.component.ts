@@ -184,7 +184,7 @@ export class ProductosComponent implements OnInit {
   public cambioTipoSubproducto(value:any, index:number){
     let valor = value.target.value;
     this.formProductos.reset();
-    // this.construirFormulario();
+    this.construirFormulario();
     this.formProductos.get("tipoProducto")?.setValue(valor);
     this.productosPorCategoria[index].listaSubproductos.forEach(subproducto => {
         if(subproducto.nombre.toLowerCase() == valor.toLowerCase()){

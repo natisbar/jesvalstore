@@ -98,9 +98,20 @@ export class ProductosComponent implements OnInit {
       window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
     }
     else {
-      this.llenarModal("Error!", "Tienes campos sin diligenciar");
+      let relacionFields = this.generarMensajeConFieldsRequeridos(categoriaPrincipal);
+      this.llenarModal("Error!", "Tienes algunos campos sin diligenciar: " + relacionFields);
       this.mostrarModal = true;
     }
+  }
+
+  public generarMensajeConFieldsRequeridos(categoria:string){
+    return `${(this.formProductos.get("tipoProducto")?.errors?.['required'] && this.formProductos.value.tipoProducto.length === 0 ) ? " -Tipo de " + categoria + "- ": ""}
+            ${(this.formProductos.get("tipoUsuario")?.errors?.['required'] && this.formProductos.value.tipoUsuario.length === 0 ) ? " -Para quién es?" : ""}
+            ${(this.formProductos.get("talla")?.errors?.['required'] && this.formProductos.value.talla.length === 0 ) ? " -Talla" : ""}
+            ${(this.formProductos.get("color")?.errors?.['required'] && this.formProductos.value.color.length === 0 ) ? " -Color" : ""}
+            ${(this.formProductos.get("faz")?.errors?.['required'] && this.formProductos.value.faz.length === 0 ) ? " -Faz": ""}
+            ${(this.formProductos.get("colorFaz")?.errors?.['required'] && this.formProductos.value.colorFaz.length === 0 ) ? " -colorFaz" : ""}
+            `;
   }
 
 
@@ -173,7 +184,7 @@ export class ProductosComponent implements OnInit {
   public cambioTipoSubproducto(value:any, index:number){
     let valor = value.target.value;
     this.formProductos.reset();
-    this.construirFormulario();
+    // this.construirFormulario();
     this.formProductos.get("tipoProducto")?.setValue(valor);
     this.productosPorCategoria[index].listaSubproductos.forEach(subproducto => {
         if(subproducto.nombre.toLowerCase() == valor.toLowerCase()){
@@ -234,6 +245,7 @@ export class ProductosComponent implements OnInit {
       this.formProductos.get("colorFaz")?.setValue("");
     }
     this.formProductos.get("colorFaz")?.updateValueAndValidity();
+
   }
 
   public redirigirEnPagina(id:string){

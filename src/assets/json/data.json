@@ -6,13 +6,13 @@
                   "nombre": "Sencillo",
                   "color": ["sencillo"],
                   "subtipo": ["Adulto", "Junior", "Mascota"],
-                  "descripcion": ""
+                  "descripcion": "Saco gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. Tiene peluche en el gorro y las mangas"
                 },
                 {
                   "nombre": "Exclusivo",
                   "color": ["exclusivo"],
                   "subtipo": ["Adulto", "Junior", "Mascota"],
-                  "descripcion": ""
+                  "descripcion": "Saco gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. Tiene peluche en todo el hoodie para que se pueda usar por ambos lados"
                 },
                 {
                   "nombre": "Edición especial",
@@ -41,32 +41,38 @@
         "tipo": [{
                     "nombre": "Térmica sencilla",
                     "color": ["sencillo"],
-                    "subtipo": ["Hombre", "Mujer", "Junior"]
+                    "subtipo": ["Hombre", "Mujer", "Junior"],
+                    "descripcion": ""
                   },
                   {
                     "nombre": "Térmica exclusiva",
                     "color": ["exclusivo"],
-                    "subtipo": ["Hombre", "Mujer", "Junior"]
+                    "subtipo": ["Hombre", "Mujer", "Junior"],
+                    "descripcion": ""
                   },
                   {
                     "nombre": "Top 1",
                     "color": ["sencillo", "exclusivo"],
-                    "subtipo": ["Hombre", "Mujer"]
+                    "subtipo": ["Hombre", "Mujer"],
+                    "descripcion": ""
                   },
                   {
                     "nombre": "Top 2",
                     "color": ["sencillo", "exclusivo"],
-                    "subtipo": ["Hombre", "Mujer"]
+                    "subtipo": ["Hombre", "Mujer"],
+                    "descripcion": ""
                   },
                   {
                     "nombre": "Enterizas",
                     "color": [],
-                    "subtipo": ["Hombre", "Mujer", "Junior"]
+                    "subtipo": ["Hombre", "Mujer", "Junior"],
+                    "descripcion": ""
                   },
                   {
                     "nombre": "Camisón",
                     "color": ["sencillo"],
-                    "subtipo": []
+                    "subtipo": [],
+                    "descripcion": ""
                   }],
         "faz": false,
         "talla": [
@@ -89,17 +95,20 @@
           "tipo": [{
                       "nombre": "Jogger",
                       "color": ["basicos"],
-                      "subtipo": ["Hombre", "Mujer"]
+                      "subtipo": ["Hombre", "Mujer"],
+                      "descripcion": ""
                     },
                     {
                       "nombre": "Sudadera",
                       "color": ["basicos"],
-                      "subtipo": ["Hombre", "Mujer"]
+                      "subtipo": ["Hombre", "Mujer"],
+                      "descripcion": ""
                     },
                     {
                       "nombre": "Buzos RBD",
                       "color": [],
-                      "subtipo": ["Hombre", "Mujer"]
+                      "subtipo": ["Hombre", "Mujer"],
+                      "descripcion": ""
                     }],
           "faz": false,
           "talla": [

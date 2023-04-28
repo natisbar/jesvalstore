@@ -1,3 +1,4 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import data from 'src/assets/json/data.json';
@@ -16,7 +17,6 @@ export class Requeridos{
   talla: boolean;
   color: boolean;
   faz: boolean;
-  colorFaz: boolean;
 
   constructor(tipoUsuario: boolean, talla: boolean, color: boolean, faz: boolean){
     // this.categoria = categoria;
@@ -47,8 +47,13 @@ export class ProductosComponent implements OnInit {
   public mensajeWhatsapp: string;
   public datosRequeridos: Requeridos[];
   public mensaje: string;
+  public mostrarModal: boolean = false;
+  public modal = {
+    titulo: "",
+    contenido: ""
+  }
 
-  constructor(){
+  constructor(private scroller: ViewportScroller){
   }
 
   ngOnInit(): void {
@@ -65,6 +70,20 @@ export class ProductosComponent implements OnInit {
     //this.cambioTipoSubproducto({"target":{"value":"sencillo"}}, 1);
   }
 
+  public abrirModal(subproducto: Subproducto){
+    this.llenarModal(subproducto.categoria + ": " + subproducto.nombre, subproducto.descripcion);
+    this.mostrarModal = true;
+  }
+
+  public cerrarModal(){
+    this.mostrarModal = false;
+  }
+
+  public llenarModal(titulo:string, contenido:string){
+    this.modal.titulo = titulo;
+    this.modal.contenido = contenido;
+  }
+
   public iniciarSolicitud(categoriaPrincipal:string, index:number){
     console.log(this.formProductos.value);
     if (this.formProductos.valid){
@@ -75,32 +94,20 @@ export class ProductosComponent implements OnInit {
       ${(this.formProductos.value.color != null) ? "Color: " + this.formProductos.value.color : ""}
       ${(this.formProductos.value.faz != null) ? "Faz: " + this.formProductos.value.faz  : ""}
       ${(this.formProductos.value.colorFaz != null) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
-      console.log(this.mensaje);
 
       window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
-
-
     }
-    console.log(this.mensaje);
-    // console.log(categoriaPrincipal);
-
-    // console.log(this.formProductos.valid);
   }
 
   public construirFormulario(){
     this.formProductos = new FormGroup({
-      tipoProducto: new FormControl(null),
-      tipoUsuario: new FormControl(null),
-      talla: new FormControl(null),
-      color: new FormControl(null),
-      faz: new FormControl(null),
-      colorFaz: new FormControl(null)
+      tipoProducto: new FormControl(""),
+      tipoUsuario: new FormControl(""),
+      talla: new FormControl(""),
+      color: new FormControl(""),
+      faz: new FormControl(""),
+      colorFaz: new FormControl("")
     });
-
-    // this.formProductos.get('tipoProducto')?.valueChanges
-    //   .subscribe(value => {
-    //     console.log(value)
-    //   });
   }
 
   public obtenerTelas(){
@@ -117,13 +124,13 @@ export class ProductosComponent implements OnInit {
       data.productos.forEach(producto => {
         subproductos = [];
         producto.tipo.forEach(tipo => {
-          subproductos.push(new Subproducto(tipo.nombre, producto.categoria, this.identificarColoresProducto(tipo.color).sort(), tipo.subtipo, this.generarNombreImagen(tipo.nombre)));
+          subproductos.push(new Subproducto(tipo.nombre, producto.categoria, this.identificarColoresProducto(tipo.color).sort(), tipo.subtipo, this.generarNombreImagen(tipo.nombre), tipo.descripcion));
         });
         categoria = new Producto(producto.categoria, subproductos, producto.faz, this.obtenerMedidas(producto.talla));
         categoria.coloresFaz = this.identificarColoresProducto(["Faz"]);
         this.productosPorCategoria.push(categoria);
       });
-      // console.log(this.productosPorCategoria);
+      console.log(this.productosPorCategoria);
       this.cantidadProductos = this.productosPorCategoria.length;
     }
   }
@@ -161,13 +168,14 @@ export class ProductosComponent implements OnInit {
   public cambioTipoSubproducto(value:any, index:number){
     let valor = value.target.value;
     this.formProductos.reset();
+    this.construirFormulario();
     this.formProductos.get("tipoProducto")?.setValue(valor);
     this.productosPorCategoria[index].listaSubproductos.forEach(subproducto => {
         if(subproducto.nombre.toLowerCase() == valor.toLowerCase()){
           // console.log(subproducto);
           let fieldRequeridos = this.obtenerFieldRequeridos(subproducto, this.productosPorCategoria[index].faz);
           this.cambiarFieldRequeridos(fieldRequeridos);
-          console.log(fieldRequeridos);
+          // console.log(fieldRequeridos);
           this.subproductoTemporal[index] = subproducto;
           this.cambioUser({"target":{"value":subproducto.subtipo[0]}}, index);
           // this.tallasTemporal[index] = this.productosPorCategoria[index].talla;
@@ -219,5 +227,9 @@ export class ProductosComponent implements OnInit {
       this.formProductos.get("colorFaz")?.setValidators(null)
     }
     this.formProductos.get("colorFaz")?.updateValueAndValidity();
+  }
+
+  public redirigirEnPagina(id:string){
+    this.scroller.scrollToAnchor(id);
   }
 }

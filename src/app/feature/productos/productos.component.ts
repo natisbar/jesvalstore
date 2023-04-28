@@ -89,11 +89,11 @@ export class ProductosComponent implements OnInit {
     if (this.formProductos.valid){
       this.mensaje = `Hola, estoy interesada en un(a) ${categoriaPrincipal}
       Tipo: ${this.formProductos.value.tipoProducto}
-      ${(this.formProductos.value.tipoUsuario != null) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
-      ${(this.formProductos.value.talla != null) ? "Talla: " + this.formProductos.value.talla : ""}
-      ${(this.formProductos.value.color != null) ? "Color: " + this.formProductos.value.color : ""}
-      ${(this.formProductos.value.faz != null) ? "Faz: " + this.formProductos.value.faz  : ""}
-      ${(this.formProductos.value.colorFaz != null) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
+      ${(this.formProductos.value.tipoUsuario != null && this.formProductos.value.tipoUsuario != "" ) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
+      ${(this.formProductos.value.talla != null && this.formProductos.value.talla != "" ) ? "Talla: " + this.formProductos.value.talla : ""}
+      ${(this.formProductos.value.color != null && this.formProductos.value.color != "" ) ? "Color: " + this.formProductos.value.color : ""}
+      ${(this.formProductos.value.faz != null && this.formProductos.value.faz != "" ) ? "Faz: " + this.formProductos.value.faz  : ""}
+      ${(this.formProductos.value.colorFaz != null && this.formProductos.value.colorFaz != "" ) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
 
       window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
     }
@@ -178,6 +178,7 @@ export class ProductosComponent implements OnInit {
           // console.log(fieldRequeridos);
           this.subproductoTemporal[index] = subproducto;
           this.cambioUser({"target":{"value":subproducto.subtipo[0]}}, index);
+          this.mostrarColoresFaz({"target":{"value":subproducto.subtipo[0]}});
           // this.tallasTemporal[index] = this.productosPorCategoria[index].talla;
         }
     });

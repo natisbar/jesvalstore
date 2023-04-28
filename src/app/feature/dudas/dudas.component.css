@@ -78,6 +78,37 @@
   padding: 2rem;
 }
 
+.guias-contenedor{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.guia{
+  border: solid 1px #B95E9C;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  /* width: 100%; */
+  min-width: 200px;
+
+}
+
+.guia p{
+  padding: 0.5rem;
+}
+
+.guia i{
+  color: #B95E9C;
+  padding: 0.5rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.guia i:hover{
+  color: black;
+}
+
 @media screen and (max-width: 1200px) {
 
   .encabezado i{

@@ -1,9 +1,8 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Paths } from 'src/app/shared/Utils/paths';
 
-const PATH_CONSULTA_IMAGENES_LOCAL = "../../assets/image/img_seccion1.jpg";
-const PATH_CONSULTA_IMAGENES_PDN = "assets/image/img_seccion1.jpg";
+const NOMBRE_IMAGEN = "img_seccion1.jpg";
 
 @Component({
   selector: 'app-nosotros',
@@ -20,13 +19,7 @@ export class NosotrosComponent implements OnInit {
     this.scroller.scrollToAnchor(id);
   }
 
-  static identificarPathImagenes(){
-    let ubicacionActual = window.location.href;
-    console.log(ubicacionActual);
-    return (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0) ? PATH_CONSULTA_IMAGENES_LOCAL : PATH_CONSULTA_IMAGENES_PDN
-  }
-
   ngOnInit(): void {
-    this.pathImagenes = NosotrosComponent.identificarPathImagenes();
+    this.pathImagenes = Paths.identificarPathImagenes(2) + NOMBRE_IMAGEN;
   }
 }

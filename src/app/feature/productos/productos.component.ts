@@ -1,33 +1,13 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { Paths } from 'src/app/shared/Utils/paths';
 import data from 'src/assets/json/data.json';
 import { Medida } from '../shared/model/medida';
 import { Producto } from '../shared/model/producto';
+import { Requeridos } from '../shared/model/requerido';
 import { Subproducto } from '../shared/model/subproducto';
 import { Tela } from '../shared/model/tela';
-
-const PATH_CONSULTA_IMAGENES_LOCAL = "../../../assets/image/";
-const PATH_CONSULTA_IMAGENES_PDN = "assets/image/";
-
-export class Requeridos{
-  // categoria: string;
-  // tipoProducto: string;
-  tipoUsuario: boolean;
-  talla: boolean;
-  color: boolean;
-  faz: boolean;
-
-  constructor(tipoUsuario: boolean, talla: boolean, color: boolean, faz: boolean){
-    // this.categoria = categoria;
-    // this.tipoProducto = tipoProducto;
-    this.tipoUsuario = tipoUsuario;
-    this.talla = talla;
-    this.color = color;
-    this.faz = faz;
-  }
-}
-
 
 @Component({
   selector: 'app-productos',
@@ -65,7 +45,7 @@ export class ProductosComponent implements OnInit {
       this.subproductoTemporal.push(producto.listaSubproductos[0]);
       this.tallasTemporal.push(producto.talla[0]);
     });
-    this.pathImagenes = ProductosComponent.identificarPathImagenes();
+    this.pathImagenes = Paths.identificarPathImagenes(3);
     this.construirFormulario();
     //this.cambioTipoSubproducto({"target":{"value":"sencillo"}}, 1);
   }
@@ -85,7 +65,7 @@ export class ProductosComponent implements OnInit {
   }
 
   public iniciarSolicitud(categoriaPrincipal:string, index:number){
-    console.log(this.formProductos.value);
+    // console.log(this.formProductos.value);
     let productoEnCategoria: boolean = this.validarProductoEnCategoria(categoriaPrincipal, this.formProductos.value.tipoProducto);
     if (this.formProductos.valid && productoEnCategoria){
       this.mensaje = `Hola, estoy interesada en un(a) ${categoriaPrincipal}
@@ -166,7 +146,7 @@ export class ProductosComponent implements OnInit {
         categoria.coloresFaz = this.identificarColoresProducto(["Faz"]);
         this.productosPorCategoria.push(categoria);
       });
-      console.log(this.productosPorCategoria);
+      // console.log(this.productosPorCategoria);
       this.cantidadProductos = this.productosPorCategoria.length;
     }
   }
@@ -246,12 +226,6 @@ export class ProductosComponent implements OnInit {
           this.tallasTemporal[index] = element;
         }
     });
-  }
-
-  static identificarPathImagenes(){
-    let ubicacionActual = window.location.href;
-    console.log(ubicacionActual);
-    return (ubicacionActual.indexOf("localhost") > 0 || ubicacionActual.indexOf("127.0.0.1") > 0) ? PATH_CONSULTA_IMAGENES_LOCAL : PATH_CONSULTA_IMAGENES_PDN
   }
 
   public mostrarColoresFaz(value:any){

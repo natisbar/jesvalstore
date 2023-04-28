@@ -97,7 +97,12 @@ export class ProductosComponent implements OnInit {
 
       window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
     }
+    else {
+      this.llenarModal("Error!", "Tienes campos sin diligenciar");
+      this.mostrarModal = true;
+    }
   }
+
 
   public construirFormulario(){
     this.formProductos = new FormGroup({
@@ -226,6 +231,7 @@ export class ProductosComponent implements OnInit {
     else{
       this.esDobleFaz = false;
       this.formProductos.get("colorFaz")?.setValidators(null)
+      this.formProductos.get("colorFaz")?.setValue("");
     }
     this.formProductos.get("colorFaz")?.updateValueAndValidity();
   }

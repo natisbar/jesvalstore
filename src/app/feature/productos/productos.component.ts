@@ -9,6 +9,9 @@ import { Requeridos } from '../shared/model/requerido';
 import { Subproducto } from '../shared/model/subproducto';
 import { Tela } from '../shared/model/tela';
 
+
+const NUMERO_JESVALSTORE = "+573219654214";
+
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -70,13 +73,14 @@ export class ProductosComponent implements OnInit {
     if (this.formProductos.valid && productoEnCategoria){
       this.mensaje = `Hola, estoy interesada en un(a) ${categoriaPrincipal}
       Tipo: ${this.formProductos.value.tipoProducto}
-      ${(this.formProductos.get("tipoUsuario")?.errors?.['required'] && this.formProductos.value.tipoUsuario.length > 0 ) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
-      ${(this.formProductos.get("talla")?.errors?.['required'] && this.formProductos.value.talla.length > 0 ) ? "Talla: " + this.formProductos.value.talla : ""}
-      ${(this.formProductos.get("color")?.errors?.['required'] && this.formProductos.value.color.length > 0  ) ? "Color: " + this.formProductos.value.color : ""}
-      ${(this.formProductos.get("faz")?.errors?.['required'] && this.formProductos.value.faz.length > 0  ) ? "Faz: " + this.formProductos.value.faz  : ""}
-      ${(this.formProductos.get("colorFaz")?.errors?.['required'] && this.formProductos.value.colorFaz.length > 0  ) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
+      ${(this.formProductos.get("tipoUsuario")?.hasValidator(Validators.required) && this.formProductos.value.tipoUsuario.length > 0 ) ? "Para: " + this.formProductos.value.tipoUsuario : ""}
+      ${(this.formProductos.get("talla")?.hasValidator(Validators.required) && this.formProductos.value.talla.length > 0 ) ? "Talla: " + this.formProductos.value.talla : ""}
+      ${(this.formProductos.get("color")?.hasValidator(Validators.required) && this.formProductos.value.color.length > 0  ) ? "Color: " + this.formProductos.value.color : ""}
+      ${(this.formProductos.get("faz")?.hasValidator(Validators.required) && this.formProductos.value.faz.length > 0  ) ? "Faz: " + this.formProductos.value.faz  : ""}
+      ${(this.formProductos.get("colorFaz")?.hasValidator(Validators.required) && this.formProductos.value.colorFaz.length > 0  ) ? "Color Faz: " + this.formProductos.value.colorFaz  : ""} `;
 
-      window.open("https://wa.me/+573219654214?text="+ this.mensaje, '_blank');
+      console.log(this.formProductos.get("tipoUsuario")?.errors?.['required']);
+      window.open("https://wa.me/"+ NUMERO_JESVALSTORE +"?text="+ this.mensaje, '_blank');
     }
     else {
       if(!productoEnCategoria){
@@ -109,8 +113,8 @@ export class ProductosComponent implements OnInit {
             ${(this.formProductos.get("tipoUsuario")?.errors?.['required'] && this.formProductos.value.tipoUsuario.length === 0 ) ? " -Para quién es?" : ""}
             ${(this.formProductos.get("talla")?.errors?.['required'] && this.formProductos.value.talla.length === 0 ) ? " -Talla" : ""}
             ${(this.formProductos.get("color")?.errors?.['required'] && this.formProductos.value.color.length === 0 ) ? " -Color" : ""}
-            ${(this.formProductos.get("faz")?.errors?.['required'] && this.formProductos.value.faz.length === 0 ) ? " -Faz": ""}
-            ${(this.formProductos.get("colorFaz")?.errors?.['required'] && this.formProductos.value.colorFaz.length === 0 ) ? " -colorFaz" : ""}
+            ${(this.formProductos.get("faz")?.errors?.['required'] && this.formProductos.value.faz.length === 0 ) ? " -Número de Faz": ""}
+            ${(this.formProductos.get("colorFaz")?.errors?.['required'] && this.formProductos.value.colorFaz.length === 0 ) ? " -Color del faz" : ""}
             `;
   }
 

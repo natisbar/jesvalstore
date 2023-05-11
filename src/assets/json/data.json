@@ -6,19 +6,19 @@
                   "nombre": "Sencillo",
                   "color": ["sencillo"],
                   "subtipo": ["Adulto", "Junior", "Mascota"],
-                  "descripcion": "Saco gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. Tiene peluche en el gorro y las mangas"
+                  "descripcion": "Saco gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. El hoodie un faz tiene peluche en el gorro y las mangas mientras que el doble faz tiene peluche en todo el hoodie para que se pueda usar por ambos lados. Caracteristicas: Tela termica, anchos, comodos y con mucho estilo."
                 },
                 {
                   "nombre": "Exclusivo",
                   "color": ["exclusivo"],
                   "subtipo": ["Adulto", "Junior", "Mascota"],
-                  "descripcion": "Saco gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. Tiene peluche en todo el hoodie para que se pueda usar por ambos lados"
+                  "descripcion": "Saco sublimado gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. El hoodie un faz tiene peluche en el gorro y las mangas mientras que el doble faz tiene peluche en todo el hoodie para que se pueda usar por ambos lados. Caracteristicas: Tela termica, anchos, comodos y con mucho estilo."
                 },
                 {
                   "nombre": "Edición especial",
-                  "color": [],
+                  "color": ["especial"],
                   "subtipo": ["Adulto", "Junior", "Mascota"],
-                  "descripcion": ""
+                  "descripcion": "Saco de tu personaje favorito, gigante y calientico perfecto para acompanarte en los dias frios. Viene por tallas, queda bien hasta en talla 3XL. El hoodie un faz tiene peluche en el gorro y las mangas mientras que el doble faz tiene peluche en todo el hoodie para que se pueda usar por ambos lados.  Caracteristicas: Tela termica, anchos, comodos y con mucho estilo."
                 }],
       "faz": true,
       "talla": [
@@ -42,37 +42,37 @@
                     "nombre": "Térmica sencilla",
                     "color": ["sencillo"],
                     "subtipo": ["Hombre", "Mujer", "Junior"],
-                    "descripcion": ""
+                    "descripcion": "Pijama tradicional (Buzo y pantalon) en tela termica viene por tallas. Tela unicolor o estampado sencillo. Características: Tela termica, comoda y calientico."
                   },
                   {
                     "nombre": "Térmica exclusiva",
                     "color": ["exclusivo"],
                     "subtipo": ["Hombre", "Mujer", "Junior"],
-                    "descripcion": ""
+                    "descripcion": "Pijama tradicional (Buzo y pantalon) en tela termica viene por tallas. Tela sublimada. Características: Tela termica, comoda y calientico."
                   },
                   {
                     "nombre": "Top 1",
                     "color": ["sencillo", "exclusivo"],
                     "subtipo": ["Hombre", "Mujer"],
-                    "descripcion": ""
+                    "descripcion": "Pijama top y short en tela termica, viene de la talla XS a la L. Características: Tela termica, comoda y calientico."
                   },
                   {
                     "nombre": "Top 2",
                     "color": ["sencillo", "exclusivo"],
                     "subtipo": ["Hombre", "Mujer"],
-                    "descripcion": ""
+                    "descripcion": "Pijama top y pantalon en tela termica, viene de la talla XS a la L. Características: Tela termica, comoda y calientico."
                   },
                   {
                     "nombre": "Enterizas",
-                    "color": [],
+                    "color": ["especial"],
                     "subtipo": ["Hombre", "Mujer", "Junior"],
-                    "descripcion": ""
+                    "descripcion": "Pijama de tu personaje favorito en tela termica. Características: Tela termica, comoda y calientico."
                   },
                   {
                     "nombre": "Camisón",
                     "color": ["sencillo"],
                     "subtipo": [],
-                    "descripcion": ""
+                    "descripcion": "Camison ligero y calientico para estar comoda en la casa y usar como pijama tambien"
                   }],
         "faz": false,
         "talla": [
@@ -96,19 +96,19 @@
                       "nombre": "Jogger",
                       "color": ["basicos"],
                       "subtipo": ["Hombre", "Mujer"],
-                      "descripcion": ""
+                      "descripcion": "Pantalon comodo para usar en casa y para eventos deportivos, viene por tallas. Características: 100% Algodon."
                     },
                     {
                       "nombre": "Sudadera",
                       "color": ["basicos"],
                       "subtipo": ["Hombre", "Mujer"],
-                      "descripcion": ""
+                      "descripcion": "Buzo en algodon perchado, viene en tallas desde la XS a la L. Características: 100% Algodon."
                     },
                     {
                       "nombre": "Buzos RBD",
                       "color": [],
                       "subtipo": ["Hombre", "Mujer"],
-                      "descripcion": ""
+                      "descripcion": "Buzo en algodon perchado, viene en tallas desde la XS a la L. Características: 100% Algodon."
                     }],
           "faz": false,
           "talla": [
@@ -130,6 +130,10 @@
             {
               "nombre": "Exclusivo",
               "colores": ["Personalizado","Aguacate claro", "Aguacate/Tostada","Aguacate oscuro","Baby Yoda","Deadpool","Minions","Naruto/nubes","Batman","Harry Potter blanco","Stitch","Gatos","Astronauta","Cuadros rojos/negros","Star Wars","Oreo","Perrito","Harry Potter azul claro","Pokemon","Pechan","Escandalosos","Hello Kitty","Snoopy","Bob Esponja","Avengers"]
+            },
+            {
+              "nombre": "Especial",
+              "colores": ["Otro","Totoro","Stich azul","Stich Rosado","Polar","Lotso","Dinosaurio","Oso panda","Chimuelo","Cinnamoroll","Pardo","Gengar","Pikachu","Pokemon","Unicornio","Kurama","Marranita","Boo","Mike Wazowski","Mapache","Totoro Sonriente","Totoro Panza","Spiderman","Conejo","Saidok","Snorlax","Pompompurin", "Minions"]
             },
             {
               "nombre": "Basicos",

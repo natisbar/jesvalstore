@@ -3,14 +3,14 @@
     <h2>Clientes felices</h2>
   </div>
   <div class="main">
-    <div class="container">
+    <div class="container" *ngIf="informacionCliente != null">
 
       <article class="review">
         <div class="img-container">
           <img src="assets/image/clientes/{{informacionCliente.img}}" alt="" id="person-img" />
         </div>
 
-        <h4 id="author">{{informacionCliente.nombre}}</h4>
+        <!-- <h4 id="author">{{informacionCliente.nombre}}</h4> -->
         <!-- <p id="job">ux designer</p> -->
         <p id="info">
           {{informacionCliente.mensaje}}

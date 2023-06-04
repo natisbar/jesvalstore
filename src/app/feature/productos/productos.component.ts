@@ -156,7 +156,7 @@ export class ProductosComponent implements OnInit {
   }
 
   public generarNombreImagen(nombreSubproducto: string): string{
-    let nombreImagen = nombreSubproducto.toLowerCase().replaceAll(" ","_").normalize("NFD").replace(/[\u0300-\u036f]/g, "")+".png";
+    let nombreImagen = nombreSubproducto.toLowerCase().replaceAll(" ","_").normalize("NFD").replace(/[\u0300-\u036f]/g, "")+".jpg";
     return nombreImagen;
   }
 

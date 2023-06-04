@@ -10,6 +10,7 @@ import { DudasComponent } from './feature/dudas/dudas.component';
 // import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -34,7 +35,6 @@ const routerOptions: ExtraOptions ={
     BrowserModule,
     CoreModule,
     SharedModule
-    // RouterModule.forRoot(routes, routerOptions)
   ],
   exports: [
     NosotrosComponent
